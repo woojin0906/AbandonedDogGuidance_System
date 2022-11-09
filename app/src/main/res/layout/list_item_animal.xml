@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 실종동물 글 화면 리사이클러뷰 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/grayback"
+        android:padding="5dp"
+        android:layout_margin="1dp">
+
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="3dp"
+            android:src="@drawable/ic_launcher_background" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="3dp">
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="글제목 : "
+                        android:padding="3dp" />
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:text="제목입니다."
+                        android:singleLine="true"
+                        android:padding="3dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="3dp">
+
+                            <TextView
+                                android:id="@+id/pet"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="품종 : "
+                                android:padding="3dp" />
+                            <TextView
+                                android:id="@+id/tv_pet"
+                                android:layout_width="90dp"
+                                android:layout_height="wrap_content"
+                                android:text="품종 및 성별"
+                                android:textColor="#FFC107"
+                                android:textStyle="bold"
+                                android:singleLine="true"
+                                android:padding="3dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="3dp">
+
+                            <TextView
+                                android:id="@+id/date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="날짜 : "
+                                android:padding="3dp" />
+
+                            <TextView
+                                android:id="@+id/tv_date"
+                                android:layout_width="90dp"
+                                android:layout_height="wrap_content"
+                                android:padding="3dp"
+                                android:singleLine="true"
+                                android:text="실종된 날짜"
+                                android:textColor="#3F51B5"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="3dp">
+
+                            <TextView
+                                android:id="@+id/money"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="사례금 : "
+                                android:padding="3dp" />
+
+                            <TextView
+                                android:id="@+id/tv_money"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:text="금액"
+                                android:singleLine="true"
+                                android:padding="3dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="3dp">
+
+                            <TextView
+                                android:id="@+id/place"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="지역 : "
+                                android:padding="3dp" />
+
+                            <TextView
+                                android:id="@+id/tv_place"
+                                android:layout_width="90dp"
+                                android:layout_height="wrap_content"
+                                android:padding="3dp"
+                                android:singleLine="true"
+                                android:text="실종된 지역"
+                                android:textColor="#FF2A2A"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

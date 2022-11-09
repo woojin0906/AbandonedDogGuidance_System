@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 로그인 하단 배경 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- 배경 색 설정 / 제가 color에 지정한 색입니다 ㅎㅎ -->
+    <solid android:color="@color/white" />
+    <!-- 모서리 곡선 설정 -->
+    <corners
+        android:topLeftRadius="40dp"
+        android:topRightRadius="40dp" />
+
+</shape>

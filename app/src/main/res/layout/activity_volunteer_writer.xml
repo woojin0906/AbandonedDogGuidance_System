@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 자원봉사 글 작성 화면 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/writerback"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:text="자원봉사"/>
+
+            <ImageView
+                android:id="@+id/volunteer_imageView"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/infoimg" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:layout_marginTop="5dp"
+                android:text="※ 현재 운영상태에 대한 사진을 올려주세요."/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="15dp"
+                    android:text="사진 :"/>
+
+                <Button
+                    android:id="@+id/volunteer_picture_btn"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="이미지 선택"
+                    android:backgroundTint="#FBE79F"
+                    android:onClick="onClick" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="15dp"
+                    android:text="등록인 :"/>
+
+                <EditText
+                    android:id="@+id/volunteer_name"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="이름"
+                    android:textSize="14dp"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="15dp"
+                    android:text="글제목 :"/>
+
+                <EditText
+                    android:id="@+id/volunteer_title"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="14dp"
+                    android:hint="제목입니다." />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="15dp"
+                    android:text="단체명 :"/>
+
+                <EditText
+                    android:id="@+id/volunteer_company"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="14dp"
+                    android:hint="단체 및 시설이름" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="15dp"
+                    android:text="담당자 :"/>
+
+                <EditText
+                    android:id="@+id/volunteer_mainName"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="14dp"
+                    android:hint="담당자명" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="15dp"
+                    android:text="주소 :"/>
+
+                <EditText
+                    android:id="@+id/volunteer_place"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:inputType="text"
+                    android:hint="상세 주소" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="15dp"
+                    android:text="연락처 :"/>
+
+                <EditText
+                    android:id="@+id/volunteer_phone"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:textSize="14dp"
+                    android:hint="ex) 010-1234-3241" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="15dp"
+                    android:text="기간 :"/>
+
+                <EditText
+                    android:id="@+id/volunteer_date"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="14dp"
+                    android:hint="모집 기간(상시모집)" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="15dp"
+                    android:text="기간 :"/>
+
+                <EditText
+                    android:id="@+id/volunteer_date2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="봉사활동 기간"
+                    android:inputType="text"
+                    android:padding="16dp"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="15dp"
+                    android:text="홈페이지 :"/>
+
+                <EditText
+                    android:id="@+id/volunteer_http"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="14dp"
+                    android:hint="홈페이지 주소" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="15dp"
+                    android:text="내용 :"/>
+                <!-- maxLines 의미 없어 보임 -->
+                <EditText
+                    android:id="@+id/volunteer_context"
+                    android:padding="16dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:maxLines="10"
+                    android:lines="5"
+                    android:hint="상세설명"
+                    android:textSize="14dp"
+                    android:scrollbars="vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:orientation="vertical"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/volunteer_writer_btn"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:backgroundTint="#FBE79F"
+            android:onClick="onClick"
+            android:textSize="24dp"
+            android:text="등록하기" />
+
+    </LinearLayout>
+</LinearLayout>
