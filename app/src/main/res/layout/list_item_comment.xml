@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:layout_margin="7dp"
     android:background="@drawable/comment_back">
 
     <TextView
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:text="userid"
+        android:textColor="#FFE072"
         android:textSize="20dp"
         android:textStyle="bold" />
 

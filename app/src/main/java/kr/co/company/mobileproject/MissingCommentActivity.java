@@ -1,5 +1,8 @@
 package kr.co.company.mobileproject;
-
+/*
+    작성자 : 전우진
+    액티비티 : 실종동물 댓글 화면
+*/
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,6 +49,7 @@ public class MissingCommentActivity extends AppCompatActivity {
         Intent receiveIntent = getIntent();
         receiveTitle = receiveIntent.getStringExtra("title");
 
+        // comment_btn -> 등록하기 버튼 클릭리스너
         Button comment_btn = findViewById(R.id.comment_btn);
         comment_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,9 +72,10 @@ public class MissingCommentActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true); // 리사이클러뷰 기존성능 강화
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        arrayList = new ArrayList<>(); // MissingAnimalInfo 객체를 담을 어레이 리스트 (어댑터쪽으로 데이터 전송)
+        arrayList = new ArrayList<>(); // CommentInfo 객체를 담을 어레이 리스트 (어댑터쪽으로 데이터 전송)
 
-        mDatabaseRef.child("MissingAniamlComment").child(receiveTitle).addValueEventListener(new ValueEventListener() {
+        // Comment -> MissingAniamlComment
+        mDatabaseRef.child("MissingAnimalComment").child(receiveTitle).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 arrayList.clear();
@@ -93,6 +98,6 @@ public class MissingCommentActivity extends AppCompatActivity {
 
     public void addinfo(String comment, String id) {
         CommentInfo info = new CommentInfo(comment, id);
-        mDatabaseRef.child("MissingAniamlComment").child(receiveTitle).push().setValue(info);
+        mDatabaseRef.child("MissingAnimalComment").child(receiveTitle).push().setValue(info);
     }
 }

@@ -1,5 +1,8 @@
 package kr.co.company.mobileproject;
-
+/*
+    작성자 : 전우진
+    액티비티 : 자원봉사 댓글 화면
+*/
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,6 +49,7 @@ public class VolunteerCommentActivity extends AppCompatActivity {
         Intent receiveIntent = getIntent();
         receiveTitle = receiveIntent.getStringExtra("title");
 
+        // comment_btn -> 등록하기 버튼 클릭리스너
         Button comment_btn = findViewById(R.id.comment_btn);
         comment_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +74,7 @@ public class VolunteerCommentActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         arrayList = new ArrayList<>(); // MissingAnimalInfo 객체를 담을 어레이 리스트 (어댑터쪽으로 데이터 전송)
 
+        //Comment -> VolunteerComment
         mDatabaseRef.child("VolunteerComment").child(receiveTitle).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

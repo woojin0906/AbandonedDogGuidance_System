@@ -82,4 +82,12 @@ public class UserAccount {
         this.id = id;
         this.idToken = idToken;
     }
+
+    public UserAccount(String id, String idToken, String name, String phone, String imgUrl) {
+        this.imgUrl = imgUrl;
+        this.name = name;
+        this.phone = phone;
+        this.id = id;
+        this.idToken = idToken;
+    }
 }

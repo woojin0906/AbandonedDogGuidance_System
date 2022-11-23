@@ -1,5 +1,8 @@
 package kr.co.company.mobileproject;
-// 후원요청 글 어댑터
+/*
+    작성자 : 전우진
+    액티비티 : 후원요청 글 어댑터
+*/
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;

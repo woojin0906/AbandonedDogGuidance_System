@@ -83,28 +83,6 @@ public class MissingAnimalWriterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_missing_animal_writer);
 
-//        // 목록(스피너) 구현
-//        Spinner spinner = findViewById(R.id.breed_spinner);
-//        textView = findViewById(R.id.breed_text);
-//
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-//                this, android.R.layout.simple_spinner_item, items
-//        );
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-//
-//        spinner.setAdapter(adapter);
-//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-//                textView.setText(items[position]);
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//                textView.setText("기타");
-//            }
-//        });
-
         // missing_picture_btn -> 이미지 선택 버튼 클릭리스너
         Button missing_picture_btn = findViewById(R.id.missing_picture_btn);
         imageView = findViewById(R.id.missing_imageView);

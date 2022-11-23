@@ -38,9 +38,10 @@
                 app:srcCompat="@drawable/infoimg" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:text="※ 현재 운영상태에 대한 사진을 올려주세요."/>
 

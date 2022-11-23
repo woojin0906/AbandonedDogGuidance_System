@@ -1,7 +1,7 @@
 package kr.co.company.mobileproject;
 /*
     작성자 : 전우진
-    액티비티 : 자원봉사 게시글 화면
+    액티비티 : 자원봉사 게시글 화면 (글 작성 후 보이는 게시글)
 */
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

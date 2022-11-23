@@ -54,6 +54,7 @@ public class MyPageActivity extends AppCompatActivity {
         UserId = mFirebaseUser.getUid();
 
         database = FirebaseDatabase.getInstance();
+        
         // UserAccount -> UserAccountInfo -> UserId -> 회원정보 중 이름과 사진 가져오기
         mDatabaseRef.child("UserAccountInfo").child(UserId).addValueEventListener(new ValueEventListener() {
             @Override
@@ -96,10 +97,10 @@ public class MyPageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //로그아웃 하기
                 mFirebaseAuth.signOut();
-                finish(); // 로그인 화면으로 변경되긴 하지만 메인 화면이 꺼지지 않음
-                //로그아웃 후 로그인 화면으로 변경
-                Intent intent = new Intent(MyPageActivity.this, LoginActivity.class);
-                startActivity(intent);
+                // 로그아웃 후 앱 종료
+                finishAffinity();
+
+
             }
         });
 
@@ -114,18 +115,15 @@ public class MyPageActivity extends AppCompatActivity {
                 alertDialogBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        // 리얼타임데이터베이스 지우기
                         mDatabaseRef = database.getReference("UserAccount").child("UserAccountInfo").child(UserId);
                         mDatabaseRef.removeValue();
+
                         // firebase 계정 지우기
                         mFirebaseAuth.getCurrentUser().delete();
-                        finish();
-                        // 리얼타임데이터베이스 지우기
 
+                        finishAffinity();
 
-//                        //탈퇴 후 로그인 화면으로 변경
-//                        Intent intent = new Intent(MyPageActivity.this, LoginActivity.class);
-//                        startActivity(intent);
                     }
                 });
 
@@ -157,7 +155,12 @@ public class MyPageActivity extends AppCompatActivity {
         mypage_company.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MyPageActivity.this, "고객센터 전화번호는 (02-321-569)입니다. \n 고객센터 운영 시간은 (9:00~18:00)입니다.", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MyPageActivity.this);
+                alertDialogBuilder.setMessage("고객센터 전화번호는 (02-321-569)입니다. 고객센터 운영 시간은 (9:00~18:00)입니다.");
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+                // Toast.makeText(MyPageActivity.this, "고객센터 전화번호는 (02-321-569)입니다. 고객센터 운영 시간은 (9:00~18:00)입니다.", Toast.LENGTH_LONG).show();
             }
         });
 

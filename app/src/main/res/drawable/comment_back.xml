@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 작성자 : 전우진
+     xml : 댓글 리스트 뒷 배경 -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
     <item>
         <shape
             android:shape="rectangle">
 
-            <solid android:color="#000000" />
+            <solid android:color="#ffffff" />
 
         </shape>
     </item>
@@ -13,7 +15,12 @@
         <shape
             android:shape="rectangle">
 
-            <solid android:color="#EDEDED" />
+            <solid android:color="#F3F3F3" />
+            <corners
+                android:topLeftRadius="10dp"
+                android:topRightRadius="10dp"
+                android:bottomLeftRadius="10dp"
+                android:bottomRightRadius="10dp" />
         </shape>
     </item>
 </layer-list>

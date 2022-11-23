@@ -1,10 +1,15 @@
 package kr.co.company.mobileproject;
-// 로그인 화면
+/*
+    작성자 : 전우진
+    액티비티 : 로그인 화면
+*/
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +32,11 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // GPS 권한 요청
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        }
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
@@ -82,7 +92,10 @@ public class LoginActivity extends AppCompatActivity {
         login_password_change_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LoginActivity.this, "비밀번호를 잃어버리신 사용자는 고객센터로 전화주세요. \n (02-321-569)", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(LoginActivity.this, "비밀번호를 잃어버리신 사용자는 고객센터로 전화주세요. \n (02-321-569)", Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(LoginActivity.this, PasswordActivity.class);
+                startActivity(intent);
             }
         });
     }

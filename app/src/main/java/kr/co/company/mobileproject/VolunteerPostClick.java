@@ -1,5 +1,8 @@
 package kr.co.company.mobileproject;
-
+/*
+    작성자 : 전우진
+    액티비티 : 자원봉사 게시글 화면 (리사이클러뷰에서 게시글 클릭시)
+*/
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;

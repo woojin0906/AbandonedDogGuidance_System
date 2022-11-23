@@ -3,6 +3,8 @@ package kr.co.company.mobileproject;
     작성자 : 전우진
     액티비티 : 회원정보수정 화면
 */
+import static android.content.ContentValues.TAG;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -13,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.icu.text.IDNA;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -50,13 +53,14 @@ public class InfoActivity extends AppCompatActivity {
     private ImageView imageView;
     private Uri imageuri;
 
+    private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();;                         // 파이어베이스 인증
     private FirebaseUser mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     private DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference("UserAccount"); // 실시간 데이터베이스
 
     private ImageView img; // 이미지뷰
-    private String UserId, email, name, pw, pwch, phone,  strPw, strPwCf, strName, image, images;
+    private String UserId, email, name, phone, strName, image, images;
     private TextView tv_email, tv_phone; // 회원정보수정 텍스트 필드
-    private EditText ed_name, ed_pw, ed_pwch; // 회원정보수정 입력 필드
+    private EditText ed_name; // 회원정보수정 입력 필드
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +73,6 @@ public class InfoActivity extends AppCompatActivity {
         img = findViewById(R.id.info_imageView);
         tv_email = (TextView) findViewById(R.id.info_email);
         ed_name = (EditText) findViewById(R.id.info_name);
-        ed_pw = (EditText) findViewById(R.id.info_pw);
-        ed_pwch = (EditText) findViewById(R.id.info_pwch);
         tv_phone = (TextView) findViewById(R.id.info_phone);
 
         // 현재 사용자의 idToken 값 가져오기
@@ -81,19 +83,14 @@ public class InfoActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userAccount.clear();
-                //for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     UserAccount userAccount = dataSnapshot.getValue(UserAccount.class);
 
                     email = userAccount.getId();
                     name = userAccount.getName();
-                    pw = userAccount.getPassword();
-                    pwch = userAccount.getPasswordConfirm();
                     phone = userAccount.getPhone();
 
                     tv_email.setText(email);
                     ed_name.setText(name);
-                    ed_pw.setText(pw);
-                    ed_pwch.setText(pwch);
                     tv_phone.setText(phone);
 
                     Glide.with(img)
@@ -101,8 +98,6 @@ public class InfoActivity extends AppCompatActivity {
                             .into(img);
                     /// 이미지 경로 받아오기(이미지 선택하지 않은 경우를 위해서)
                     images = userAccount.getImgUrl();
-               // }
-
             }
 
             @Override
@@ -124,20 +119,44 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
+        // info_passwordBtn -> 비밀번호 변경 버튼 클릭리스너
+        Button info_passwordBtn = findViewById(R.id.info_passwordBtn);
+        info_passwordBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                        if(email.equals("")) {
+                            Toast.makeText(InfoActivity.this, "이메일을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                        } else {
+
+                            mFirebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(InfoActivity.this, "이메일을 보냈습니다.", Toast.LENGTH_LONG).show();
+                                        finish();
+                                        startActivity(new Intent(getApplicationContext(), MyPageActivity.class));
+                                    } else {
+                                        Toast.makeText(InfoActivity.this, "메일전송이 실패되었습니다.", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+                        }
+            }
+        });
+
         // info_changeBtn -> 회원정보수정 버튼 클릭 리스너
         Button info_changeBtn = findViewById(R.id.info_changeBtn);
         info_changeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                strPw = ed_pw.getText().toString();
-                strPwCf = ed_pwch.getText().toString();
                 strName = ed_name.getText().toString();
                 email = tv_email.getText().toString();
                 phone = tv_phone.getText().toString();
 
-                // 비밀번호와 이름 빈칸일 경우 dialog 메시지 기능 제공
-                if(strPw.equals("") || strPwCf.equals("") || strName.equals("")) {
+                // 이름이 빈칸일 경우 dialog 메시지 기능 제공
+                if(strName.equals("")) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(InfoActivity.this);
                     dialog.setIcon(R.mipmap.ic_launcher);
                     dialog.setTitle("알림");
@@ -145,9 +164,6 @@ public class InfoActivity extends AppCompatActivity {
                     dialog.setNegativeButton("확인", null);
                     dialog.show();
                 } else {
-                    // 비밀번호와 비밀번호 확인이 동일해야하며, 6자리 이상으로 작성해야하는 조건
-                    if(strPw.equals(strPwCf)) {
-                        if(strPw.length() >= 6) {
                             // 이미지를 선택한 경우 선택된 이미지로 업데이트
                             if(imageuri != null) {
                                 uploadToFirebase(imageuri);
@@ -159,16 +175,11 @@ public class InfoActivity extends AppCompatActivity {
                                 // 이미지를 선택하지 않은 경우 기존의 이미지 불러오기
                                 uploadTo(images);
                                 Toast.makeText(getApplicationContext(), "수정 완료", Toast.LENGTH_SHORT).show();
-//                                Intent intent = new Intent(InfoActivity.this, MyPageActivity.class);
-//                                startActivity(intent);
+                                Intent intent = new Intent(InfoActivity.this, MyPageActivity.class);
+                                startActivity(intent);
                                 finish();
                             }
-                        } else {
-                            Toast.makeText(getApplicationContext(), "비밀번호는 6자리 이상으로 입력해주세요.", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "비빌번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
-                    }
+
                 }
 
             }
@@ -178,18 +189,18 @@ public class InfoActivity extends AppCompatActivity {
     // 이미지를 선택한 경우 이미지 경로 받아오기
     private void uploadToFirebase(Uri uri) {
         image = uri.toString();
-        addinfo(email, UserId, strPw, strPwCf, strName, phone, image);
+        addinfo(email, UserId, strName, phone, image);
     }
 
     // 이미지를 선택하지 않은 경우 -> 원래의 이미지
     private void uploadTo(String images) {
-        addinfo(email, UserId, strPw, strPwCf, strName, phone, images);
+        addinfo(email, UserId, strName, phone, images);
     }
 
     // 회원정보 업데이트
     // UserAccount -> UserAccountInfo -> UserId
-    public void addinfo(String email, String IdToken, String strPw, String strPwCf, String strName, String phone, String image) {
-        UserAccount info = new UserAccount(email, IdToken, strPw, strPwCf, strName, phone, image);
+    public void addinfo(String email, String IdToken, String strName, String phone, String image) {
+        UserAccount info = new UserAccount(email, IdToken,strName, phone, image);
 
         mDatabaseRef.child("UserAccountInfo").child(UserId).setValue(info);
     }

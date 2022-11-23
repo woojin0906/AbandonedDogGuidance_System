@@ -1,7 +1,7 @@
 package kr.co.company.mobileproject;
 /*
     작성자 : 전우진
-    액티비티 : 실종동물 게시글 화면 2
+    액티비티 : 실종동물 게시글 화면 (리사이클러뷰에서 게시글 클릭시)
 */
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

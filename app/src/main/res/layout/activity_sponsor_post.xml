@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:text="아이들에게 도움을 주세요!"
-                android:textSize="30dp"
+                android:textSize="32dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_gravity="center" />
@@ -60,7 +60,7 @@
                     android:padding="10dp"
                     android:text="글제목 :"
                     android:textColor="#FBD033"
-                    android:textSize="15dp" />
+                    android:textSize="17dp" />
 
                 <TextView
                     android:id="@+id/sponsor_post_title"
@@ -68,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:text="제목입니다."
                     />
             </LinearLayout>
@@ -83,7 +83,7 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:text="단체명 :"
                     android:textColor="#FBD033"/>
 
@@ -93,7 +93,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="이름"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:inputType="text" />
             </LinearLayout>
 
@@ -107,7 +107,7 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:text="담당자 :"
                     android:textColor="#FBD033"/>
 
@@ -117,7 +117,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:text="이름" />
             </LinearLayout>
 
@@ -132,7 +132,7 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:text="연락처 :"
                     android:textColor="#FBD033"/>
 
@@ -142,7 +142,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:text="전화번호" />
@@ -158,7 +158,7 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:text="주소 :"
                     android:textColor="#FBD033"/>
 
@@ -168,7 +168,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:text="주소" />
             </LinearLayout>
 
@@ -182,7 +182,7 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:text="홈페이지 :"
                     android:textColor="#FBD033"/>
 
@@ -192,7 +192,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:text="주소" />
             </LinearLayout>
 
@@ -206,7 +206,7 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:text="등록인 :"
                     android:textColor="#FBD033"/>
 
@@ -216,7 +216,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:text="이름" />
             </LinearLayout>
 
@@ -230,7 +230,7 @@
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:text="내용 :"
                     android:textColor="#FBD033"/>
 
@@ -243,7 +243,7 @@
                     android:maxLines="10"
                     android:lines="5"
                     android:text="상세설명"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:scrollbars="vertical" />
             </LinearLayout>
 
@@ -253,7 +253,7 @@
                 android:background="@drawable/mypageback"
                 android:padding="10dp"
                 android:text="※ 후원을 하기 전에 직접 기관, 단체 및 시설에 대해 자세히 알아보세요. \n ※ 후원요청 글은 기관, 단체 및 시설에서 올린 것이며, 도와주개!는 게시장소만 제공해주므로 글에 대한 책임이 없습니다."
-                android:textSize="13dp" />
+                android:textSize="14dp" />
             <Button
                 android:id="@+id/btnComment"
                 android:layout_width="150dp"

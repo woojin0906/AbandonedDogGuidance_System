@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 로그인 하단 배경 -->
+<!-- 작성자 : 전우진
+     xml : 로그인 하단 배경 -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <!-- 배경 색 설정 / 제가 color에 지정한 색입니다 ㅎㅎ -->

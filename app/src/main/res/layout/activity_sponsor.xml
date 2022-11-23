@@ -29,8 +29,6 @@
             android:layout_marginTop="45dp"
             android:layout_marginLeft="25dp"
             android:backgroundTint="#FBE79F"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
             android:onClick="onClick"
             android:text="글등록"
             android:textSize="17dp" />

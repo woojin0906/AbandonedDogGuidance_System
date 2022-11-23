@@ -42,7 +42,7 @@ public class VolunteerActivity extends AppCompatActivity {
         arrayList = new ArrayList<>();                          // VolunteerInfo 객체를 담을 어레이 리스트 (어댑터쪽으로 데이터 전송)
 
         // 자원봉사 firebase에서 가져오는 것
-        // Volunteer -> VolunteerInfo
+        // Volunteer -> VolunteerInfo -> 최신 글부터
         mDatabaseRef.child("VolunteerInfo").limitToLast(100).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

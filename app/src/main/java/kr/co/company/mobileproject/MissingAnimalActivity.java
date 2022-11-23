@@ -42,7 +42,7 @@ public class MissingAnimalActivity extends AppCompatActivity {
         arrayList = new ArrayList<>();                      // MissingAnimalInfo 객체를 담을 어레이 리스트 (어댑터쪽으로 데이터 전송)
 
         // 실종동물찾기 firebase에서 가져오는 것
-       // MissingAnimal -> MissingAnimalInfo
+       // MissingAnimal -> MissingAnimalInfo -> 최신 글 부터
         mDatabaseRef.child("MissingAnimalInfo").limitToLast(100).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

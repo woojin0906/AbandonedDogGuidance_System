@@ -1,5 +1,8 @@
 package kr.co.company.mobileproject;
-
+/*
+    작성자 : 전우진
+    액티비티 : 나의 자원봉사 글 화면
+*/
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,7 +27,7 @@ public class myWriterVolunActivity extends AppCompatActivity {
     private RecyclerView recyclerView;                                  // 리사이클러뷰
     private RecyclerView.Adapter adapter;                               // 리사이클러뷰 어댑터
     private RecyclerView.LayoutManager layoutManager;                   // 리사이클러뷰 레이아웃매니저
-    private ArrayList<VolunteerInfo> arrayList;                     // ArrayList<MissingAnimalInfo>
+    private ArrayList<VolunteerInfo> arrayList;                     // ArrayList<VolunteerInfo>
     private DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference("Volunteer");  // 실시간 데이터베이스
     private String UserId;
 
@@ -37,19 +40,19 @@ public class myWriterVolunActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);                 // 리사이클러뷰 기존성능 강화
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        arrayList = new ArrayList<>();                      // MissingAnimalInfo 객체를 담을 어레이 리스트 (어댑터쪽으로 데이터 전송)
+        arrayList = new ArrayList<>();                      // VolunteerInfo 객체를 담을 어레이 리스트 (어댑터쪽으로 데이터 전송)
 
         UserId = mFirebaseUser.getUid();
 
-        // 실종동물찾기 firebase에서 가져오는 것
-        // MissingAnimal -> MissingAnimalInfo
+        // 자원봉사 firebase에서 가져오는 것
+        // Volunteer -> VolunteerInfoWriter -> 최신 글 부터
         mDatabaseRef.child("VolunteerInfoWriter").child(UserId).limitToLast(100).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // 파이어베이스 데이터베이스의 데이터를 받아오는 곳
                 arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    VolunteerInfo volunteerInfo = snapshot.getValue(VolunteerInfo.class); // 만들어뒀던 MissingAnimalInfo 객체에 데이터를 담는다.
+                    VolunteerInfo volunteerInfo = snapshot.getValue(VolunteerInfo.class); // 만들어뒀던 VolunteerInfo 객체에 데이터를 담는다.
                     arrayList.add(0, volunteerInfo);  // 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
                 }
                 adapter.notifyDataSetChanged(); // 리스트 저장 및 새로고침

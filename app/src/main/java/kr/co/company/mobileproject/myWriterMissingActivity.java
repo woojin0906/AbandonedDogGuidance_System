@@ -1,5 +1,8 @@
 package kr.co.company.mobileproject;
-
+/*
+    작성자 : 전우진
+    액티비티 : 나의 실종동물 글 보기 화면
+*/
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -42,7 +45,7 @@ public class myWriterMissingActivity extends AppCompatActivity {
         UserId = mFirebaseUser.getUid();
 
         // 실종동물찾기 firebase에서 가져오는 것
-        // MissingAnimal -> MissingAnimalInfo
+        // MissingAnimal -> MissingAnimalInfoWriter -> 최신 글 부터
         mDatabaseRef.child("MissingAnimalInfoWriter").child(UserId).limitToLast(100).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

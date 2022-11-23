@@ -71,12 +71,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // main_btn_search -> 유기견보호센터 검색 버튼 클릭리스너 -> SearchActivity 이동
+        // main_btn_search -> 유기견보호센터 버튼 클릭리스너 -> SearchActivity 이동
         Button main_btn_search = findViewById(R.id.main_btn_search);
         main_btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 유기견보호센터 검색 화면으로 변경
+                // 유기견보호센터 화면으로 변경
                 Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(intent);
 

@@ -13,10 +13,10 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:paddingLeft="10dp"
             android:text="나의 후원요청 글"
-            android:textSize="28dp"
+            android:textSize="35dp"
             android:textColor="@color/black"
             android:textStyle="bold" />
 

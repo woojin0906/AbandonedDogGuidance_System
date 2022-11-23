@@ -42,7 +42,7 @@ public class SponsorActivity extends AppCompatActivity {
         arrayList = new ArrayList<>(); // SponsorInfo 객체를 담을 어레이 리스트 (어댑터쪽으로 데이터 전송)
 
         // 후원요청 firebase에서 가져오는 것
-        // Sponsor -> SponsorInfo
+        // Sponsor -> SponsorInfo -> 최신 글 부터
         mDatabaseRef.child("SponsorInfo").limitToLast(100).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

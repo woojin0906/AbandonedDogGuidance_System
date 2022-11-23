@@ -18,7 +18,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="3dp"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@drawable/dog" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,6 +43,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="글제목 : "
+                        android:textSize="15dp"
                         android:padding="1dp" />
 
                     <TextView
@@ -50,6 +51,7 @@
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:text="제목입니다."
+                        android:textSize="15dp"
                         android:singleLine="true"
                         android:padding="1dp" />
                 </LinearLayout>
@@ -65,6 +67,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="내용 : "
+                        android:textSize="15dp"
                         android:padding="1dp" />
 
                     <TextView
@@ -72,6 +75,7 @@
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:text="내용입니다."
+                        android:textSize="15dp"
                         android:singleLine="true"
                         android:padding="1dp" />
                 </LinearLayout>
@@ -83,7 +87,7 @@
                     android:orientation="horizontal">
 
                         <LinearLayout
-                            android:layout_width="140dp"
+                            android:layout_width="130dp"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:padding="2dp">
@@ -92,6 +96,7 @@
                                 android:id="@+id/company"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:textSize="15dp"
                                 android:text="단체명 : "
                                 android:padding="1dp" />
 
@@ -101,6 +106,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="이름"
                                 android:textStyle="bold"
+                                android:textSize="15dp"
                                 android:textColor="#FF9800"
                                 android:singleLine="true"
                                 android:padding="1dp" />
@@ -117,14 +123,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="장소 : "
+                            android:textSize="15dp"
                             android:padding="1dp" />
 
                         <TextView
                             android:id="@+id/tv_place"
-                            android:layout_width="105dp"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:padding="1dp"
                             android:singleLine="true"
+                            android:textSize="15dp"
                             android:text="위치"
                             android:textStyle="bold"
                             android:textColor="#3F51B5" />
@@ -141,6 +149,7 @@
                                 android:id="@+id/phone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:textSize="15dp"
                                 android:text="전화번호 : "
                                 android:padding="1dp" />
 
@@ -150,6 +159,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="1dp"
                                 android:singleLine="true"
+                                android:textSize="15dp"
                                 android:text="ex) 010-1234-5678"
                                 android:textColor="#FFC107"
                                 android:textStyle="bold" />

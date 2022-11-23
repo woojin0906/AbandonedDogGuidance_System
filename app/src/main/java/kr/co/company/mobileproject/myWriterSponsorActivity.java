@@ -1,5 +1,8 @@
 package kr.co.company.mobileproject;
-
+/*
+    작성자 : 전우진
+    액티비티 : 나의 후원요청 글 화면
+*/
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,7 +27,7 @@ public class myWriterSponsorActivity extends AppCompatActivity {
     private RecyclerView recyclerView;                                  // 리사이클러뷰
     private RecyclerView.Adapter adapter;                               // 리사이클러뷰 어댑터
     private RecyclerView.LayoutManager layoutManager;                   // 리사이클러뷰 레이아웃매니저
-    private ArrayList<SponsorInfo> arrayList;                     // ArrayList<MissingAnimalInfo>
+    private ArrayList<SponsorInfo> arrayList;                     // ArrayList<SponsorInfo>
     private DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference("Sponsor");  // 실시간 데이터베이스
     private String UserId;
 
@@ -37,19 +40,19 @@ public class myWriterSponsorActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);                 // 리사이클러뷰 기존성능 강화
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        arrayList = new ArrayList<>();                      // MissingAnimalInfo 객체를 담을 어레이 리스트 (어댑터쪽으로 데이터 전송)
+        arrayList = new ArrayList<>();                      // SponsorInfo 객체를 담을 어레이 리스트 (어댑터쪽으로 데이터 전송)
 
         UserId = mFirebaseUser.getUid();
 
-        // 실종동물찾기 firebase에서 가져오는 것
-        // MissingAnimal -> MissingAnimalInfo
+        // 후원요청 firebase에서 가져오는 것
+        // Sponsor -> SponsorInfoWriter -> 최신 글 부터
         mDatabaseRef.child("SponsorInfoWriter").child(UserId).limitToLast(100).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // 파이어베이스 데이터베이스의 데이터를 받아오는 곳
                 arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
-                    SponsorInfo sponsorInfo = snapshot.getValue(SponsorInfo.class); // 만들어뒀던 MissingAnimalInfo 객체에 데이터를 담는다.
+                    SponsorInfo sponsorInfo = snapshot.getValue(SponsorInfo.class); // 만들어뒀던 SponsorInfo 객체에 데이터를 담는다.
                     arrayList.add(0, sponsorInfo);  // 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
                 }
                 adapter.notifyDataSetChanged(); // 리스트 저장 및 새로고침

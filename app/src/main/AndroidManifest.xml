@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kr.co.company.mobileproject">
-
+    <!-- 지도 권한 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -11,47 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileProject">
-        <!--
-             TODO: Before you run your application, you need a Google Maps API key.
-
-             To get one, follow the directions here:
-
-                https://developers.google.com/maps/documentation/android-sdk/get-api-key
-
-             Once you have your API key (it starts with "AIza"), define a new property in your
-             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
-             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
-        -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="API키" />
-
         <activity
-            android:name=".myWriterSponsorActivity"
+            android:name=".PasswordActivity"
             android:exported="false" />
-        <activity
-            android:name=".myWriterVolunActivity"
-            android:exported="false" />
-        <activity
-            android:name=".myWriterMissingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MyWriterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MissingCommentActivity"
-            android:exported="true" />
-        <activity
-            android:name=".VolunteerCommentActivity"
-            android:exported="true" />
-        <activity
-            android:name=".SponsorCommentActivity"
-            android:exported="true" />
         <activity
             android:name=".StartActivity"
-            android:exported="true" />
-        <activity
-            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -60,6 +28,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
             android:name=".AgreeActivity"
             android:exported="true" />
         <activity
@@ -67,6 +38,9 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MyWriterActivity"
             android:exported="true" />
         <activity
             android:name=".MissingAnimalActivity"
@@ -81,6 +55,12 @@
             android:name=".MissingPostClick"
             android:exported="true" />
         <activity
+            android:name=".MissingCommentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".myWriterMissingActivity"
+            android:exported="true" />
+        <activity
             android:name=".VolunteerActivity"
             android:exported="true" />
         <activity
@@ -93,6 +73,12 @@
             android:name=".VolunteerPostClick"
             android:exported="true" />
         <activity
+            android:name=".VolunteerCommentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".myWriterVolunActivity"
+            android:exported="true" />
+        <activity
             android:name=".SponsorActivity"
             android:exported="true" />
         <activity
@@ -103,6 +89,12 @@
             android:exported="true" />
         <activity
             android:name=".SponsorPostClick"
+            android:exported="true" />
+        <activity
+            android:name=".SponsorCommentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".myWriterSponsorActivity"
             android:exported="true" />
         <activity
             android:name=".SearchActivity"
