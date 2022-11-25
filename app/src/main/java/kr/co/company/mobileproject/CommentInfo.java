@@ -1,5 +1,8 @@
 package kr.co.company.mobileproject;
-
+/*
+    작성자 : 전우진
+    액티비티 : 댓글 등록 클래스
+*/
 public class CommentInfo {
     private String id;
     private String comment;

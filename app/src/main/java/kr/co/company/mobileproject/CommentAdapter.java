@@ -19,7 +19,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CustomVi
     private ArrayList<CommentInfo> arrayList;
     private Context context;
     private FirebaseUser mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-    //private String strId = mFirebaseUser.getEmail();
 
     public CommentAdapter(ArrayList<CommentInfo> arrayList, Context context) {
         this.arrayList = arrayList;

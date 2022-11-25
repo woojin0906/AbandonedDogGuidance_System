@@ -1,5 +1,8 @@
 package kr.co.company.mobileproject;
-
+/*
+    작성자 : 전우진
+    액티비티 : 비밀번호 재설정 화면
+*/
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
@@ -44,10 +47,12 @@ public class PasswordActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
+                                    Intent intent = new Intent(PasswordActivity.this, MainActivity.class);
                                     Toast.makeText(PasswordActivity.this, "이메일을 보냈습니다.", Toast.LENGTH_LONG).show();
+                                    startActivity(intent);
                                     finish();
                                 } else {
-                                    Toast.makeText(PasswordActivity.this, "메일전송이 실패되었습니다.", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(PasswordActivity.this, "메일 전송이 실패되었습니다.", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
