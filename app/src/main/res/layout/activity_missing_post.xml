@@ -20,24 +20,15 @@
             <TextView
                 android:id="@+id/missing_post_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginTop="50dp"
                 android:text="우리 아이를 찾아주세요!"
-                android:textSize="35dp"
-                android:textColor="@color/black"
+                android:textSize="32dp"
+                android:textColor="#ffffff"
                 android:textStyle="bold"
+                android:background="#ff0000"
+                android:padding="10dp"
                 android:layout_gravity="center" />
-
-            <TextView
-                android:id="@+id/missing_post_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="연락처"
-                android:textColor="#F44336"
-                android:textSize="30dp"
-                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/missing_post_image"
@@ -46,6 +37,20 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/dog" />
+
+            <TextView
+                android:id="@+id/missing_post_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="연락처"
+                android:padding="5dp"
+                android:gravity="center"
+                android:textColor="#F44336"
+                android:textSize="30dp"
+                android:background="@drawable/phoneback"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,6 +72,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="장소"
+                    android:textColor="@color/black"
                     android:textSize="17dp"
                     android:inputType="textPersonName" />
             </LinearLayout>
@@ -86,12 +92,14 @@
 
                 <TextView
                     android:id="@+id/missing_post_date"
-                    android:padding="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textSize="17dp"
-                    android:text="날짜" />
+                    android:padding="16dp"
+                    android:text="날짜"
+                    android:textStyle="bold"
+                    android:textColor="#4056D1"
+                    android:textSize="17dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -113,6 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+                    android:textColor="@color/black"
                     android:textSize="17dp"
                     android:text="제목입니다." />
             </LinearLayout>
@@ -136,6 +145,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+                    android:textColor="@color/black"
+
                     android:textSize="17dp"
                     android:text="품종과 성별" />
             </LinearLayout>
@@ -160,6 +171,8 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:textSize="17dp"
+                    android:textColor="#FF0000"
+                    android:textStyle="bold"
                     android:text="금액" />
             </LinearLayout>
 
@@ -184,6 +197,8 @@
                     android:inputType="textMultiLine"
                     android:maxLines="10"
                     android:lines="5"
+                    android:textColor="@color/black"
+
                     android:text="상세설명"
                     android:textSize="17dp"
                     android:scrollbars="vertical" />

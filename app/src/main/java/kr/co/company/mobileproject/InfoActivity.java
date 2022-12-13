@@ -134,8 +134,7 @@ public class InfoActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(InfoActivity.this, "이메일을 보냈습니다.", Toast.LENGTH_LONG).show();
-                                        finish();
-                                        startActivity(new Intent(getApplicationContext(), MyPageActivity.class));
+
                                     } else {
                                         Toast.makeText(InfoActivity.this, "메일전송이 실패되었습니다.", Toast.LENGTH_LONG).show();
                                     }

@@ -3,14 +3,18 @@ package kr.co.company.mobileproject;
     작성자 : 전우진
     액티비티 : 지도 화면
 */
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -25,6 +29,7 @@ import java.io.ObjectInputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Map;
 
 import com.skt.Tmap.TMapGpsManager;
 import com.skt.Tmap.TMapMarkerItem;
@@ -32,12 +37,15 @@ import com.skt.Tmap.TMapPoint;
 import com.skt.Tmap.TMapView;
 import com.skt.Tmap.poi_item.TMapPOIItem;
 
-public class SearchActivity extends AppCompatActivity implements TMapGpsManager.onLocationChangedCallback{
+public class SearchActivity extends AppCompatActivity implements TMapGpsManager.onLocationChangedCallback {
 
     private TMapView tMapView = null;
     private TMapGpsManager tmapgps = null;
     private static String TMapAPIKey = "l7xx72602e7783854a2fa17f0707466b1b45";  // TMap API 키
     private Context mContext = null;
+    private static int nRightButtonCount;
+    Location location;
+    LocationManager locationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +69,7 @@ public class SearchActivity extends AppCompatActivity implements TMapGpsManager.
         tMapView.setLanguage(TMapView.LANGUAGE_KOREAN);
 
         // Linear Layout
-        LinearLayout linearLayoutTmap = (LinearLayout)findViewById(R.id.linearLayoutRmap);
+        LinearLayout linearLayoutTmap = (LinearLayout) findViewById(R.id.linearLayoutRmap);
         linearLayoutTmap.addView(tMapView);
 
         tmapgps = new TMapGpsManager(this);
@@ -75,15 +83,36 @@ public class SearchActivity extends AppCompatActivity implements TMapGpsManager.
 
         tmapgps.OpenGps();
 
-//        tMapView.setOnCalloutRightButtonClickListener(new TMapView.OnCalloutRightButtonClickCallback()
-//        {
-//            @Override
-//            public void onCalloutRightButton(TMapMarkerItem markerItem) {
-//
-//                Toast.makeText(SearchActivity.this,"", Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
+        // 마커의 오른쪽 화살표 클릭 시 현재 위치와 마커 위치의 polyline 표시
+        tMapView.setOnCalloutRightButtonClickListener(new TMapView.OnCalloutRightButtonClickCallback()
+        {
+            @Override
+            public void onCalloutRightButton(TMapMarkerItem markerItem) {
+
+                TMapPoint tMapPoint = markerItem.getTMapPoint();
+
+                // 오른쪽 버튼을 1번째 클릭 시
+                if( nRightButtonCount == 0 )
+                {
+                    tMapView.setCenterPoint(tMapPoint.getLongitude(), tMapPoint.getLatitude());
+                    tMapView.setZoom(15);
+
+                    nRightButtonCount++;
+                }
+                // 오른쪽 버튼 2번째 클릭 시
+                else if( nRightButtonCount == 1 )
+                {
+                    TMapPoint tMapPointStart = new TMapPoint(37.484556, 126.773460);
+
+                    FindPetPathTask findCarPathTask = new FindPetPathTask(getApplicationContext(),
+                            tMapView);
+                    findCarPathTask.execute(tMapPointStart, tMapPoint);
+                    nRightButtonCount = 0;
+
+                    tMapView.setCenterPoint(126.773460, 37.484556);
+                }
+            }
+        });
     }
 
     private void setUpMap() {
@@ -110,8 +139,8 @@ public class SearchActivity extends AppCompatActivity implements TMapGpsManager.
                 markerItem1.setCanShowCallout(true);
                 markerItem1.setAutoCalloutVisible(true);
 
-                //Bitmap bitmap_i = BitmapFactory.decodeResource(mContext.getResources(), R.mipmap.i_go);
-                //markerItem1.setCalloutRightButtonImage(bitmap_i);
+                Bitmap bitmap_i = BitmapFactory.decodeResource(mContext.getResources(), R.mipmap.i_go);
+                markerItem1.setCalloutRightButtonImage(bitmap_i);
                 markerItem1.setTMapPoint(point);
                 markerItem1.setName(entity.getName());
                 tMapView.setCenterPoint(mapPoint.get(i).getLongitude(), mapPoint.get(i).getLatitude()); // 위도 경도
