@@ -14,7 +14,7 @@
         android:layout_marginTop="70dp"
         android:text="서비스 이용 약관"
         android:textAlignment="center"
-        android:textColor="#FFE27A"
+        android:textColor="#FBE79F"
         android:textSize="40dp"
         android:textStyle="bold" />
 
@@ -72,7 +72,7 @@
         android:layout_height="65dp"
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
-        android:backgroundTint="#FBE79F"
+        android:backgroundTint="#FBE5A6"
         android:onClick="onClick"
         android:text="확인"
         android:textSize="25dp" />

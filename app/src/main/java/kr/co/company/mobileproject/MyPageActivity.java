@@ -97,10 +97,10 @@ public class MyPageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //로그아웃 하기
                 mFirebaseAuth.signOut();
-                // 로그아웃 후 앱 종료
+                //로그아웃 후 로그인 화면으로 변경
                 finishAffinity();
-
-
+                Intent intent = new Intent(MyPageActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
 

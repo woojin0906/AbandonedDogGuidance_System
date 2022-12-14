@@ -5,7 +5,9 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_margin="7dp"
-    android:background="@drawable/comment_back">
+    android:background="@drawable/comment_back"
+
+    >
 
     <TextView
         android:id="@+id/comment_id"

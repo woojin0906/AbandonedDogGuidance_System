@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -43,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
                  //로그아웃 하기
                 mFirebaseAuth.signOut();
                  //로그아웃 후 로그인 화면으로 변경
-                finish();
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -94,5 +95,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        // main_comment -> 커뮤니티 클릭리스너 -> ChatActivity 이동
+        TextView main_comment = findViewById(R.id.main_comment);
+        main_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 자원봉사 화면으로 변경
+                Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

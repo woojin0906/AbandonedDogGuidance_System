@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:orientation="vertical">
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:background="@drawable/postback">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,23 +22,15 @@
             <TextView
                 android:id="@+id/missing_post_name"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_height="55dp"
                 android:layout_marginTop="50dp"
                 android:text="우리 아이를 찾아주세요!"
                 android:textSize="32dp"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:background="#ff0000"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:layout_gravity="center" />
-
-            <ImageView
-                android:id="@+id/missing_post_image"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/dog" />
 
             <TextView
                 android:id="@+id/missing_post_phone"
@@ -49,8 +43,15 @@
                 android:gravity="center"
                 android:textColor="#F44336"
                 android:textSize="30dp"
-                android:background="@drawable/phoneback"
                 android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/missing_post_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/dog" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,6 +65,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:textSize="17dp"
+                    android:textColor="#FBD033"
                     android:text="잃어버린 장소 :"/>
 
                 <TextView
@@ -88,6 +90,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:textSize="17dp"
+                    android:textColor="#FBD033"
                     android:text="잃어버린 날짜 :"/>
 
                 <TextView
@@ -112,6 +115,7 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
+                    android:textColor="#FBD033"
                     android:textSize="17dp"
                     android:text="글제목 :"/>
 
@@ -137,6 +141,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:textSize="17dp"
+                    android:textColor="#FBD033"
                     android:text="품종 및 성별 :"/>
 
                 <TextView
@@ -162,6 +167,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:textSize="17dp"
+                    android:textColor="#FBD033"
                     android:text="사례금 :"/>
 
                 <TextView
@@ -187,6 +193,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:textSize="17dp"
+                    android:textColor="#FBD033"
                     android:text="내용 :"/>
 
                 <TextView
@@ -209,7 +216,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="댓글보기"
-                android:backgroundTint="#FBE79F"
+                android:backgroundTint="#FBE5A6"
                 android:layout_gravity="center"/>
 
             <LinearLayout

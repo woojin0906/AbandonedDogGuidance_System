@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MissingAnimalActivity extends AppCompatActivity {
+public class MissingAnimalActivity extends AppCompatActivity{
 
     private RecyclerView recyclerView;                                  // 리사이클러뷰
     private RecyclerView.Adapter adapter;                               // 리사이클러뷰 어댑터

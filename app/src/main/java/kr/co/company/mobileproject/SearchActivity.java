@@ -9,6 +9,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,6 +20,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +35,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.skt.Tmap.TMapGpsManager;
 import com.skt.Tmap.TMapMarkerItem;
 import com.skt.Tmap.TMapPoint;
@@ -44,8 +49,11 @@ public class SearchActivity extends AppCompatActivity implements TMapGpsManager.
     private static String TMapAPIKey = "l7xx72602e7783854a2fa17f0707466b1b45";  // TMap API 키
     private Context mContext = null;
     private static int nRightButtonCount;
-    Location location;
-    LocationManager locationManager;
+    private TMapPoint tpoint = null;
+    private double Latitude = 0;
+    private double Longitude = 0;
+
+    private EditText btnSetTrackingMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +64,10 @@ public class SearchActivity extends AppCompatActivity implements TMapGpsManager.
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+        // T Map View
         tMapView = new TMapView(this);
 
+        // API Key
         tMapView.setSKTMapApiKey(TMapAPIKey);
         setUpMap();
 
@@ -73,43 +83,62 @@ public class SearchActivity extends AppCompatActivity implements TMapGpsManager.
         linearLayoutTmap.addView(tMapView);
 
         tmapgps = new TMapGpsManager(this);
-        tmapgps.setMinTime(100);
-        tmapgps.setMinDistance(1);
+        tmapgps.setMinTime(1000);              // 일정 시간마다 리셋
+        tmapgps.setMinDistance(1);             // 일정 거리마다 리셋
         //tmapgps.setProvider(tmapgps.NETWORK_PROVIDER); // 네트워크에 맞춰 현재 위치 표시  -> 디바이스로 실행할 때 사용
         tmapgps.setProvider(tmapgps.GPS_PROVIDER);       //GPS  ->  애뮬레이터로 실행할 때 사용
 
+        // 현재위치로 표시되는 좌표의 위도, 경도를 반환.
+        tpoint = tMapView.getLocationPoint();
+        Latitude = tpoint.getLatitude();
+        Longitude = tpoint.getLongitude();
+
+        // 화면중심을 단말의 현재위치로 이동
         tMapView.setTrackingMode(true);
         tMapView.setSightVisible(true);
 
         tmapgps.OpenGps();
 
+        // 현재위치로 돌아가는 버튼(EditText)
+        btnSetTrackingMode = (EditText) findViewById(R.id.BtnSetTrackingMode);
+        btnSetTrackingMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()) {
+                    case R.id.BtnSetTrackingMode:
+                        Toast.makeText(SearchActivity.this, "현위치로 돌아갑니다", Toast.LENGTH_SHORT).show();
+
+                        // 화면중심을 단말의 현재위치로 이동
+                        tMapView.setTrackingMode(true);
+                        tMapView.setSightVisible(true);
+                        break;
+                }
+            }
+        });
+
         // 마커의 오른쪽 화살표 클릭 시 현재 위치와 마커 위치의 polyline 표시
-        tMapView.setOnCalloutRightButtonClickListener(new TMapView.OnCalloutRightButtonClickCallback()
-        {
+        tMapView.setOnCalloutRightButtonClickListener(new TMapView.OnCalloutRightButtonClickCallback() {
             @Override
             public void onCalloutRightButton(TMapMarkerItem markerItem) {
 
                 TMapPoint tMapPoint = markerItem.getTMapPoint();
 
                 // 오른쪽 버튼을 1번째 클릭 시
-                if( nRightButtonCount == 0 )
-                {
+                if (nRightButtonCount == 0) {
                     tMapView.setCenterPoint(tMapPoint.getLongitude(), tMapPoint.getLatitude());
                     tMapView.setZoom(15);
 
                     nRightButtonCount++;
                 }
                 // 오른쪽 버튼 2번째 클릭 시
-                else if( nRightButtonCount == 1 )
-                {
-                    TMapPoint tMapPointStart = new TMapPoint(37.484556, 126.773460);
+                else if (nRightButtonCount == 1) {
+                    TMapPoint tMapPointStart = new TMapPoint(Latitude, Longitude);
 
-                    FindPetPathTask findCarPathTask = new FindPetPathTask(getApplicationContext(),
-                            tMapView);
-                    findCarPathTask.execute(tMapPointStart, tMapPoint);
+                    FindPetPathTask findPetPathTask = new FindPetPathTask(getApplicationContext(), tMapView);
+                    findPetPathTask.execute(tMapPointStart, tMapPoint);
                     nRightButtonCount = 0;
 
-                    tMapView.setCenterPoint(126.773460, 37.484556);
+                    tMapView.setCenterPoint(Longitude, Latitude);
                 }
             }
         });
@@ -123,8 +152,8 @@ public class SearchActivity extends AppCompatActivity implements TMapGpsManager.
         } catch (Exception e) {
             e.printStackTrace();
         }
-        for(int i =0; i < mapPoint.size(); i++) {
-            for(MapPoint entity : mapPoint) {
+        for (int i = 0; i < mapPoint.size(); i++) {
+            for (MapPoint entity : mapPoint) {
                 TMapPoint point = new TMapPoint(mapPoint.get(i).getLatitude(), mapPoint.get(i).getLongitude());
                 TMapMarkerItem markerItem1 = new TMapMarkerItem();
                 Bitmap bitmap = null;
@@ -150,6 +179,7 @@ public class SearchActivity extends AppCompatActivity implements TMapGpsManager.
         }
 
     }
+
     @Override
     public void onLocationChange(Location location) {
         tMapView.setLocationPoint(location.getLongitude(), location.getLatitude());

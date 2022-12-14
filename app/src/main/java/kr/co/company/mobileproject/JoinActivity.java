@@ -162,8 +162,8 @@ public class JoinActivity extends AppCompatActivity {
                                     addinfo(strId, UserId, strPw, strPwCf, strName, strPh, image);
 
                                     Toast.makeText(JoinActivity.this, "회원가입에 성공하셨습니다.", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(JoinActivity.this, LoginActivity.class);
-                                    startActivity(intent);
+                                   // Intent intent = new Intent(JoinActivity.this, LoginActivity.class);
+                                   // startActivity(intent);
                                     finish();
                                 } else {
 

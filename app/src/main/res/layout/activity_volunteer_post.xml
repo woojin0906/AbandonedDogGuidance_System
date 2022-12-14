@@ -324,7 +324,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="댓글보기"
-                android:backgroundTint="#FBE79F"
+                android:backgroundTint="#FBE5A6"
                 android:layout_gravity="center"/>
             <LinearLayout
                 android:id="@+id/layout"
