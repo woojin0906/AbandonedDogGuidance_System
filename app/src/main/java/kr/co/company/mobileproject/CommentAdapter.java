@@ -1,5 +1,8 @@
 package kr.co.company.mobileproject;
-
+/*
+    작성자 : 전우진
+    액티비티 : 댓글 어댑터
+*/
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;

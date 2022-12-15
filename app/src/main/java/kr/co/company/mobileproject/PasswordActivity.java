@@ -41,18 +41,18 @@ public class PasswordActivity extends AppCompatActivity {
                         Toast.makeText(PasswordActivity.this, "이메일을 입력해주세요.", Toast.LENGTH_SHORT).show();
                     } else {
                         //비밀번호 재설정 이메일 보내기
-                        String emailAddress = editText.getText().toString().trim();
+                       String emailAddress = editText.getText().toString().trim();
 
                         mFirebaseAuth.sendPasswordResetEmail(emailAddress).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Intent intent = new Intent(PasswordActivity.this, MainActivity.class);
+                                    Intent intent = new Intent(PasswordActivity.this, LoginActivity.class);
                                     Toast.makeText(PasswordActivity.this, "이메일을 보냈습니다.", Toast.LENGTH_LONG).show();
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    Toast.makeText(PasswordActivity.this, "메일 전송이 실패되었습니다.", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(PasswordActivity.this, "이메일을 확인해주세요.", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });

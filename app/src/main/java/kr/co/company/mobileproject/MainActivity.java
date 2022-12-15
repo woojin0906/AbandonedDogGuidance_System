@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         main_comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 자원봉사 화면으로 변경
+                // 채팅 화면으로 변경
                 Intent intent = new Intent(MainActivity.this, ChatActivity.class);
                 startActivity(intent);
             }

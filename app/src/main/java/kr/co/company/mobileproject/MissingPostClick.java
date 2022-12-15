@@ -67,12 +67,12 @@ public class MissingPostClick extends AppCompatActivity {
                 .load(img)
                 .into(tv_img);
 
-        // login_joinButton -> 회원가입 버튼 클릭리스너 -> AgreeActivity로 이동
+        // btnComment -> 댓글보기 버튼 클릭리스너 -> MissingCommentActivity로 이동
         Button btnComment = findViewById(R.id.btnComment);
         btnComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 회원가입 화면으로 이동
+                // 실종동물찾기 댓글 화면으로 이동
                 Intent intent = new Intent(MissingPostClick.this, MissingCommentActivity.class);
                 intent.putExtra("title", title);
                 startActivity(intent);

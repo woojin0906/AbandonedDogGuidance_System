@@ -147,6 +147,7 @@ public class MyPageActivity extends AppCompatActivity {
                 // 내 정보 관리 화면으로 이동
                 Intent intent = new Intent(MyPageActivity.this, InfoActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

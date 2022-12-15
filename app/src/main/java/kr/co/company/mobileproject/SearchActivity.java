@@ -48,12 +48,9 @@ public class SearchActivity extends AppCompatActivity implements TMapGpsManager.
     private TMapGpsManager tmapgps = null;
     private static String TMapAPIKey = "l7xx72602e7783854a2fa17f0707466b1b45";  // TMap API 키
     private Context mContext = null;
-    private static int nRightButtonCount;
     private TMapPoint tpoint = null;
-    private double Latitude = 0;
-    private double Longitude = 0;
 
-    private EditText btnSetTrackingMode;
+    private TextView btnSetTrackingMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,13 +82,8 @@ public class SearchActivity extends AppCompatActivity implements TMapGpsManager.
         tmapgps = new TMapGpsManager(this);
         tmapgps.setMinTime(1000);              // 일정 시간마다 리셋
         tmapgps.setMinDistance(1);             // 일정 거리마다 리셋
-        //tmapgps.setProvider(tmapgps.NETWORK_PROVIDER); // 네트워크에 맞춰 현재 위치 표시  -> 디바이스로 실행할 때 사용
-        tmapgps.setProvider(tmapgps.GPS_PROVIDER);       //GPS  ->  애뮬레이터로 실행할 때 사용
-
-        // 현재위치로 표시되는 좌표의 위도, 경도를 반환.
-        tpoint = tMapView.getLocationPoint();
-        Latitude = tpoint.getLatitude();
-        Longitude = tpoint.getLongitude();
+        tmapgps.setProvider(tmapgps.NETWORK_PROVIDER); // 네트워크에 맞춰 현재 위치 표시  -> 디바이스로 실행할 때 사용
+        //tmapgps.setProvider(tmapgps.GPS_PROVIDER);       //GPS  ->  애뮬레이터로 실행할 때 사용
 
         // 화면중심을 단말의 현재위치로 이동
         tMapView.setTrackingMode(true);
@@ -99,8 +91,8 @@ public class SearchActivity extends AppCompatActivity implements TMapGpsManager.
 
         tmapgps.OpenGps();
 
-        // 현재위치로 돌아가는 버튼(EditText)
-        btnSetTrackingMode = (EditText) findViewById(R.id.BtnSetTrackingMode);
+        // 현재위치로 돌아가는 버튼(TextView)
+        btnSetTrackingMode = (TextView) findViewById(R.id.BtnSetTrackingMode);
         btnSetTrackingMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,33 +104,6 @@ public class SearchActivity extends AppCompatActivity implements TMapGpsManager.
                         tMapView.setTrackingMode(true);
                         tMapView.setSightVisible(true);
                         break;
-                }
-            }
-        });
-
-        // 마커의 오른쪽 화살표 클릭 시 현재 위치와 마커 위치의 polyline 표시
-        tMapView.setOnCalloutRightButtonClickListener(new TMapView.OnCalloutRightButtonClickCallback() {
-            @Override
-            public void onCalloutRightButton(TMapMarkerItem markerItem) {
-
-                TMapPoint tMapPoint = markerItem.getTMapPoint();
-
-                // 오른쪽 버튼을 1번째 클릭 시
-                if (nRightButtonCount == 0) {
-                    tMapView.setCenterPoint(tMapPoint.getLongitude(), tMapPoint.getLatitude());
-                    tMapView.setZoom(15);
-
-                    nRightButtonCount++;
-                }
-                // 오른쪽 버튼 2번째 클릭 시
-                else if (nRightButtonCount == 1) {
-                    TMapPoint tMapPointStart = new TMapPoint(Latitude, Longitude);
-
-                    FindPetPathTask findPetPathTask = new FindPetPathTask(getApplicationContext(), tMapView);
-                    findPetPathTask.execute(tMapPointStart, tMapPoint);
-                    nRightButtonCount = 0;
-
-                    tMapView.setCenterPoint(Longitude, Latitude);
                 }
             }
         });
@@ -164,12 +129,10 @@ public class SearchActivity extends AppCompatActivity implements TMapGpsManager.
 
                 // 풍선뷰 안의 항목에 글을 지정
                 markerItem1.setCalloutTitle(mapPoint.get(i).getName()); // 보호센터 이름
-                markerItem1.setCalloutSubTitle(mapPoint.get(i).getPhone());  // 보호센터 주소
+                markerItem1.setCalloutSubTitle(mapPoint.get(i).getPhone());  // 보호센터 전화번호
                 markerItem1.setCanShowCallout(true);
                 markerItem1.setAutoCalloutVisible(true);
 
-                Bitmap bitmap_i = BitmapFactory.decodeResource(mContext.getResources(), R.mipmap.i_go);
-                markerItem1.setCalloutRightButtonImage(bitmap_i);
                 markerItem1.setTMapPoint(point);
                 markerItem1.setName(entity.getName());
                 tMapView.setCenterPoint(mapPoint.get(i).getLongitude(), mapPoint.get(i).getLatitude()); // 위도 경도

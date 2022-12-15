@@ -75,8 +75,6 @@ public class MissingAnimalWriterActivity extends AppCompatActivity {
     Intent intent;
     private EditText EtMName, EtMTitle, EtMPlace, EtMMoney, EtMPhone, EtMDate, EtMContext, EtMPet;
     String UserId, strName, strTitle, strMoney, strPlace, strPhone, strDate, strCon, image, strPet;
-    // 품종 목록(스피너) 데이터를 배열에 넣어서 준비
-//    String[] items = {"말티즈", "푸들", "시바견", "골든리트리버", "기타"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
