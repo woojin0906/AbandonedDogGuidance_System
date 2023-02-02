@@ -1,4 +1,4 @@
-# MobileProject
+# AbandonedDogGuidance_System
 인하공업전문대학
 모바일 프로그래밍응용 - 2학년 2학기
 
