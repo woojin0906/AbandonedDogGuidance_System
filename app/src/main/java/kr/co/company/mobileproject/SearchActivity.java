@@ -46,7 +46,7 @@ public class SearchActivity extends AppCompatActivity implements TMapGpsManager.
 
     private TMapView tMapView = null;
     private TMapGpsManager tmapgps = null;
-    private static String TMapAPIKey = "l7xx72602e7783854a2fa17f0707466b1b45";  // TMap API 키
+    private static String TMapAPIKey = "인증키";  // TMap API 키
     private Context mContext = null;
     private TMapPoint tpoint = null;
 
