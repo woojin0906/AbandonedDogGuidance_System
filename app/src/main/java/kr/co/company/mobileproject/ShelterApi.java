@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class ShelterApi {
-    private static String ServiceKey ="03caf098fbce4f5abdce2addf54d3c88";
+    private static String ServiceKey ="인증키";
     public ShelterApi() {
         try {
             apiParserSearch();
