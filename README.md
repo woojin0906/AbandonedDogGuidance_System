@@ -23,31 +23,41 @@
 - 유기견보호센터 위치 안내 : 경기도 내의 유기견보호센터 위치를 지도에서 선택하여 유기견 보호센터의 상호명과 전화번호 제공
 <br><br>
 
-## 🖥️ 프로젝트 구현
-**[메인]**
-<div align="center"><img src="https://user-images.githubusercontent.com/100831211/216225888-bc6617d0-eb5d-4921-a5e9-b0374182e5e1.png" width="25%"></div>
+## 동작 흐름도
+<div align="center"><img src = "https://github.com/woojin0906/AbandonedDogGuidance_System/assets/100831211/ddd8616a-ba82-4aea-8f74-88b7b4af7913" width="40%"></div>
+<br><br>
 
+## 🖥️ 프로젝트 구현
 **[로딩]**
 <div align="center"><img src="https://user-images.githubusercontent.com/100831211/216226440-36620af8-6426-4410-a86f-6a5f18815395.png" width="25%"></div>
 
 **[회원가입 & 로그인]**
-<div align="center"><img src="https://user-images.githubusercontent.com/100831211/216225325-1c819612-68fd-4e2b-bda9-488b11758da6.png" width="25%"></div>
-<div align="center"><img src="https://user-images.githubusercontent.com/100831211/216225369-06c5d446-d37e-4d1f-9ca5-42c4082a0c66.png" width="25%"></div>
-<div align="center"><img src="https://user-images.githubusercontent.com/100831211/216225517-9fd2fd10-80d8-4db5-a7c8-3c76707470b2.png" width="25%"></div>
+<div align="center"><img src="https://user-images.githubusercontent.com/100831211/216225325-1c819612-68fd-4e2b-bda9-488b11758da6.png" width="25%">
+  <img src="https://user-images.githubusercontent.com/100831211/216225369-06c5d446-d37e-4d1f-9ca5-42c4082a0c66.png" width="25%">
+  <img src="https://user-images.githubusercontent.com/100831211/216225517-9fd2fd10-80d8-4db5-a7c8-3c76707470b2.png" width="25%"></div>
 
 **[비밀번호 찾기]**
 <div align="center"><img src="https://user-images.githubusercontent.com/100831211/216226561-d95061c4-5d5d-4f76-b42d-c6203dd0667d.png" width="25%"></div>
 
+**[메인]**
+<div align="center"><img src="https://github.com/woojin0906/AbandonedDogGuidance_System/assets/100831211/305408a7-74c5-4a10-8c8b-2cdc9524b061" width="25%"></div>
+
 **[프로필]**
-<div align="center"><img src="https://user-images.githubusercontent.com/100831211/216225946-9ebc613d-0da6-496c-9762-ade8494b7480.png" width="25%"></div>
-<div align="center"><img src="https://user-images.githubusercontent.com/100831211/216225996-ddffc97c-d454-4899-9e78-4710a0ed17a9.png" width="25%"></div>
+<div align="center"><img src="https://user-images.githubusercontent.com/100831211/216225946-9ebc613d-0da6-496c-9762-ade8494b7480.png" width="25%">
+  <img src="https://user-images.githubusercontent.com/100831211/216225996-ddffc97c-d454-4899-9e78-4710a0ed17a9.png" width="25%"></div>
 
 **[게시판]**
-<div align="center"><img src="https://user-images.githubusercontent.com/100831211/216226726-355e0223-3c46-46b8-af1b-13088074614d.png" width="25%"></div>
-<div align="center"><img src="https://user-images.githubusercontent.com/100831211/216226796-6deb1f2d-db7e-49ad-b2a6-a2d71c48a858.png" width="25%"></div>
+<div align="center"><img src="https://user-images.githubusercontent.com/100831211/216226726-355e0223-3c46-46b8-af1b-13088074614d.png" width="25%">
+  <img src="https://user-images.githubusercontent.com/100831211/216226796-6deb1f2d-db7e-49ad-b2a6-a2d71c48a858.png" width="25%">
+<img src="https://github.com/woojin0906/AbandonedDogGuidance_System/assets/100831211/61040b63-d476-4e97-9fc7-2fe4f8255090" width="25%">
+</div>
 
 **[나의 글 모음]**
 <div align="center"><img src="https://user-images.githubusercontent.com/100831211/216226108-a1affb12-b0f1-4fba-a8ba-fe062b374403.png" width="25%"></div>
 
+**[채팅]**
+<div align="center"><img src="https://github.com/woojin0906/AbandonedDogGuidance_System/assets/100831211/2dca355c-7897-4675-9b92-444f9d648748" width="25%"></div>
 
 **[지도]**
+<div align="center"><img src="https://github.com/woojin0906/AbandonedDogGuidance_System/assets/100831211/ff2db874-e443-40b5-8373-a2b753562966" width="25%"></div>
+
